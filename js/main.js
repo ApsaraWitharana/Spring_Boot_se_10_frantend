@@ -134,7 +134,7 @@ $('#updatepost').click(function () {
 }
 
     function selectRow(row) {
-    var id = row.dataset.id;
+    var id = row.children[0].id;
     var title = row.children[1].textContent;
     var category = row.children[2].textContent;
     var text = row.children[3].textContent;
@@ -172,6 +172,7 @@ $('#updatepost').click(function () {
     // Update existing post
     var row = document.querySelector(tr[id='${id}']);
     if (row) {
+    row.children[0].id = id;
     row.children[1].textContent = title;
     row.children[2].textContent = category;
     row.children[3].textContent = text;
@@ -180,10 +181,10 @@ $('#updatepost').click(function () {
     // Add new post
     var tableBody = document.getElementById('posts-table');
     var newRow = tableBody.insertRow();
-    var newId = Date.now(); // Generate a new unique ID
-    newRow.dataset.id = newId;
+    var id = Date.now(); // Generate a new unique ID
+    newRow.dataset.id = id;
     newRow.innerHTML = `
-                <td>${newId}</td>
+                <td>${id}</td>
                 <td>${title}</td>
                 <td>${category}</td>
                 <td>${text}</td>
@@ -214,7 +215,8 @@ $('#updatepost').click(function () {
     // Update existing post
     var row = document.querySelector(tr[id='${id}']);
     if (row) {
-    row.children[1].textContent = title;
+        row.children[0].id = id;
+        row.children[1].textContent = title;
     row.children[2].textContent = category;
     row.children[3].textContent = text;
     // Clear the selection
