@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Manage Posts</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 <body>
 <main>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: green">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: green;">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,56 +41,76 @@
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
-                <section id="container">
-                 <form class="mt-5">
-                 <div class="mb-3">
-                    <label for="post-id" class="form-label">Post id</label>
-                    <input type="text" class="form-control" id="post-id" placeholder="input your id">
-                 </div>
+    <div class="container">
+        <div class="form-container">
+            <h2>Manage Posts</h2>
+            <form id="post-form">
                 <div class="mb-3">
-                    <label for="post-title" class="form-label">Post title</label>
-                    <input type="text" class="form-control" id="post-title" placeholder="input your title">
+                    <label for="post-id" class="form-label">Post ID</label>
+                    <input type="text" class="form-control" id="post-id" placeholder="Input your ID">
                 </div>
                 <div class="mb-3">
-                    <label for="post-category" class="form-label">Post category</label>
-                    <input type="text" class="form-control" id="post-category" placeholder="input your category">
-                <!--    <textarea class="form-control" id="post-category" rows="3"></textarea>-->
+                    <label for="post-title" class="form-label">Post Title</label>
+                    <input type="text" class="form-control" id="post-title" placeholder="Input your title">
+                </div>
+                <div class="mb-3">
+                    <label for="post-category" class="form-label">Post Category</label>
+                    <input type="text" class="form-control" id="post-category" placeholder="Input your category">
                 </div>
                 <div class="mb-3">
                     <label for="text" class="form-label">Text</label>
-                    <input type="text" class="form-control" id="text" placeholder="input your title">
-                <!--    <textarea class="form-control" id="text" rows="3"></textarea>-->
+                    <input type="text" class="form-control" id="text" placeholder="Input your text">
                 </div>
-                    <button type="button" class="btn btn-info" id="savepost">Save</button>
-                    <button type="button" class="btn btn-info " id="updatepost">Update</button>
-                    <button type="button" class="btn btn-info" id="deletepost">Delete</button>
-                    <button type="button" class="btn btn-info" id="getpost">GetAll</button>
-                 </form>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr>
-                            <th>Post id</th>
-                            <th>Post Title</th>
-                            <th>Post category</th>
-                            <th>Text</th>
-                        </tr>
-                        </thead>
-                        <tbody id="posts-table">
-                        <!-- Posts will be appended here -->
-                        </tbody>
-                    </table>
-                </section>
-             </main>
-
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-primary" id="savepost">Save</button>
+                    <button type="button" class="btn btn-secondary" id="updatepost">Update</button>
+                    <button type="button" class="btn btn-danger" id="deletepost">Delete</button>
+                    <button type="button" class="btn btn-info" id="getpost">Get All</button>
+                </div>
+            </form>
+        </div>
+        <div class="table-container">
+            <table class="table table-striped table-hover table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>Post ID</th>
+                    <th>Post Title</th>
+                    <th>Post Category</th>
+                    <th>Text</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="posts-table">
+                <!-- Example row -->
+                <tr data-id="1">
+                    <td>1</td>
+                    <td>Sample Title</td>
+                    <td>Category</td>
+                    <td>Sample Text</td>
+                    <td>
+                        <button class="btn btn-icon" title="Update" onclick="updateRow(this)">
+                            <i class="fas fa-edit text-warning"></i>
+                        </button>
+                        <button class="btn btn-icon" title="Delete" onclick="deleteRow(this)">
+                            <i class="fas fa-trash-alt text-danger"></i>
+                        </button>
+                    </td>
+                </tr>
+                <!-- More rows will be appended here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
 
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/jquery-3.7.1.min.js"></script>
 <script src="./js/main.js"></script>
-</body>
 
+</body>
 </html>
