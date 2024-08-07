@@ -1,0 +1,30 @@
+ /*set css to form modified*/
+body {
+    background-color: #f8f9fa;
+}
+.container {
+    margin-top: 50px;
+}
+.form-container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.form-container h2 {
+    margin-bottom: 20px;
+}
+.table-container {
+    margin-top: 30px;
+    cursor: pointer;
+}
+.btn-icon {
+    border: none;
+    background: none;
+}
+.btn-icon:hover {
+    cursor: pointer;
+}
+tr.selected {
+    background-color: #e9ecef;
+}
