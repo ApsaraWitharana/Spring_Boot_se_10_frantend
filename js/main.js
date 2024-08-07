@@ -19,6 +19,7 @@ $('#savepost').click( function (){
         success:function (result){
             console.log(result)
             alert("done")
+            ready();
         },
         error:function (error){
             console.log(error)
@@ -46,21 +47,50 @@ $('#deletepost').click( function (){
     });
 });
 
-$('#getpost').click(function (){
-    let  postId = $('#post-id').val(); // get value
-    $.ajax({
-         url: "http://localhost:8080/blog/getpost/" + postId, // Include postId in the URL
-        method: "GET",
-        success: function (result) {
-            console.log(result);
-            alert("get successful");
-        },
-        error: function (error) {
-            console.log(error);
-            alert("get failed, please try again");
-        }
+// $('#getpost').click(function (){
+//     let  postId = $('#post-id').val(); // get value
+//     $.ajax({
+//          url: "http://localhost:8080/blog/getpost/" + postId, // Include postId in the URL
+//         method: "GET",
+//         success: function (result) {
+//             console.log(result);
+//             alert("get successful");
+//         },
+//         error: function (error) {
+//             console.log(error);
+//             alert("get failed, please try again");
+//         }
+//     });
+
+//})
+$(document).ready(function() {
+    $('#getpost').click(function (){
+        // let  postId = $('#post-id').val(); // get value
+        $.ajax({
+            "url": "http://localhost:8080/blog/getAll?id", // Adjust URL as needed
+            method: "GET",
+            success: function (result) {
+                console.log(result);
+                $('#posts-table').empty(); // Clear the table
+                result.forEach(post => {
+                    $('#posts-table').append(`
+                                <tr>
+                                    <td>${post.id}</td>
+                                    <td>${post.title}</td>
+                                    <td>${post.category}</td>
+                                    <td>${post.content}</td>
+                                </tr>
+                            `);
+                });
+                alert("Get all posts successful");
+            },
+            error: function (error) {
+                console.log(error);
+                alert("Get all posts failed, please try again");
+            }
+        });
     });
-})
+});
 $('#updatepost').click(function () {
     // Catch the input field values
     let postId = $('#post-id').val(); // Get value
